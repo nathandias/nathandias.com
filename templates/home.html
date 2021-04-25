@@ -1,0 +1,283 @@
+{% extends 'base_generic.html' %}
+
+{% block head_content %}
+    {% load static %}
+
+    <!-- GitHub Activity -->
+
+    <!-- github calendar css -->
+    <link rel="stylesheet" href="{% static 'plugins/github-calendar/dist/github-calendar.css' %}">
+    <!-- github activity css -->    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/octicons/2.0.2/octicons.min.css">
+    <link rel="stylesheet" href="{% static 'plugins/github-activity/github-activity-0.1.5.min.css' %}">
+
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/0.7.2/mustache.min.js"></script>
+    <script type="text/javascript" src="{% static 'plugins/github-activity/github-activity-0.1.5.min.js' %}"></script>
+
+{% endblock %}
+
+{% block content %}
+        <div class="row">
+            <div class="primary col-lg-8 col-12">
+                <section class="about section">
+                    <div class="section-inner shadow-sm rounded">
+                        <h2 class="heading">About Me</h2>
+                        <div class="content">
+                            <p>I'm a 7+ years web and software developer proficient in PHP, Perl, Python, Django and MySQL with experience in CMS creation and management, payment gateway integration, email marketing automation, and business reporting.</p>
+
+                            <p>For over 10 years, I've used this know-how to benefit my own small business in dance instruction and event production, while also developing hands-on expertise in graphic design, copy-writing, managing a team, and strategic planning.</p>
+
+                            <p>These days, I'm using my programming savvy and bottom-line business focus to help new clients and organizations achieve their technology goals.</p>
+
+                         
+                        </div><!--//content-->
+                    </div><!--//section-inner-->                 
+                </section><!--//section-->
+    
+               <section class="latest section">
+                    <div class="section-inner shadow-sm rounded">
+                        <h2 class="heading">Latest Projects</h2>
+                        <div class="content">    
+
+
+                            {% for project in code_projects %}
+                            
+                            <div class="item featured text-center">
+                                
+                                <div class="featured-image">
+                                    <a href="{{ project.url }}" target="_blank">
+                                    <img class="img-fluid project-image rounded shadow-sm" src="{{ project.thumbnail.url }}" alt="{{ project.name }}" />
+                                    </a>
+                                </div>
+                                
+                                <h3 class="title mb-3"><a href="{{ project.url }}" target="_blank">{{ project.name }}</a></h3>
+                                    
+                                <div class="desc text-left">                                    
+                                    <p>{{ project.description }}</p>
+                                </div><!--//desc-->         
+                                <a class="btn btn-cta-secondary" href="{{ project.url }}" target="_blank"><i class="fas fa-thumbs-up"></i> See the code</a>                 
+                            </div><!--//item-->
+                            {% endfor %}
+
+
+                            <hr class="divider" />
+
+
+                            {% for project in website_projects %}
+                            <div class="item row">
+                                <a class="col-md-4 col-12" href="{{ project.url }}" target="_blank">
+                                <img class="img-fluid project-image rounded shadow-sm" src="{{ project.thumbnail.url }}" alt="{{ project.name }}" />
+                                </a>
+                                <div class="desc col-md-8 col-12">
+                                    <h3 class="title"><a href="{{ project.url }}" target="_blank">{{ project.name }}</a></h3>
+                                    <p class="mb-2">{{ project.description }} </p>
+                                    <p><a class="more-link" href="{{ project.url }}" target="_blank"><i class="fas fa-external-link-alt"></i>See the website</a></p>
+                                </div><!--//desc-->                          
+                            </div><!--//item-->                            
+                            {% endfor %}
+                            
+                        </div><!--//content-->  
+                    </div><!--//section-inner-->                
+                </section><!--//section-->
+                
+                <section class="experience section">
+                    <div class="section-inner shadow-sm rounded">
+                        <h2 class="heading">Work Experience</h2>
+                        <div class="content">
+                            <div class="item">
+                                <h3 class="title">Web and Software Developer - <span class="place"><a href="#">Freelance</a></span> <span class="year">(2005 - Present)</span></h3>
+                                <ul>
+                                  <li>Built a class signup and payment system active on 2 websites and handling 75%+ of sales</li>
+                                  <li>Developed, hosted and maintained 5+ websites including installing custom contact forms</li>
+                                    <li>Designed graphics and wrote marketing copy for one weekly and one monthly email newsletter</li>
+                                </ul>
+                            </div><!--//item-->
+                            <div class="item">
+                                <h3 class="title">PHP Web Developer- <span class="place"><a href="#">Extension Media, Inc.</a></span> <span class="year">(Nov 2007 - May 2009)</span></h3>
+                                <ul>
+                                  <li>Upgraded site templates to client visual specification for 2 online publications</li>
+                                  <li>Debugged and fixed broken product database search feature</li>
+                                </ul>
+                              </div><!--//item-->
+                            
+                            <div class="item">
+                                <h3 class="title">Associate Engineer, CAD - <span class="place"><a href="#">Broadcom Corporation</a></span> <span class="year">(2001 - 2005)</span></h3>
+                                <ul>
+                                  <li>Produced tri-weekly microprocessor timing analysis report</li>
+                                  <li>Developed in-house automation and analysis tools to support circuit design team</li>
+                                </ul>
+                            </div><!--//item-->
+
+                            <hr>
+
+                            <h2 class="heading">Non-Technical Work Experience</h2>
+                            <div class="item">
+                              <h3 class="title">Owner - <span class="place"><a href="#">Cat's Corner / Swing or Nothing</a></span> <span class="year">(2005 - March 2020)</span></h3>
+                              <ul>
+                                <li>Ran all aspects of a swing dance instruction, events and entertainment business</li>
+                                <li>Taught group dance classes 5+ hours per week at two locations as well as private lessons</li>
+                                <li>Produced weekly live music dance parties including booking bands</li>
+                                <li>Managed an event production team of 4 paid and 6 volunteer staff</li>
+                                <li>Recruited and trained performers for special events</li>
+                              </ul>
+                          </div><!--//item-->
+                          
+                            
+                        </div><!--//content-->  
+                    </div><!--//section-inner-->                 
+
+   
+
+                  </section><!--//section-->
+
+
+                  <section class="github section">                  
+                    
+                    <div class="section-inner shadow-sm rounded">
+                        <h2 class="heading">My GitHub</h2>   
+                        
+                        <div id="feed"></div>
+                        
+                        <script>
+                        
+                            GitHubActivity.feed({ username: "nathandias", selector: '#feed', limit: 5 });
+      
+                        </script>
+
+                        
+                    </div><!--//secton-inner-->
+                </section><!--//section-->
+
+
+
+  
+              </div><!--//primary-->
+
+
+            <div class="secondary col-lg-4 col-12">
+                 <aside class="info aside section">
+                    <div class="section-inner shadow-sm rounded">
+                        <h2 class="heading sr-only">Basic Information</h2>
+                        <div class="content">
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-map-marker-alt"></i><span class="sr-only">Location:</span>San Francisco, US</li>
+                                <li><i class="fas fa-envelope"></i><span class="sr-only">Email:</span><a href="mailto:nathan.dias@gmail.com">nathan.dias@gmail.com</a></li>
+                                <li><i class="fas fa-link"></i><span class="sr-only">Website:</span><a href="https://nathandias.com">https://nathandias.com</a></li>
+                            </ul>
+                        </div><!--//content-->  
+                    </div><!--//section-inner-->                 
+                </aside><!--//aside-->
+                
+                <aside class="skills aside section">
+                    <div class="section-inner shadow-sm rounded">
+                        <h2 class="heading">Skills</h2>
+                        <div class="content">
+                            <p class="intro">
+                                Intro about your skills goes here. Keep the list lean and only show your primary skillset. You can always provide a link to your Linkedin or Github profile so people can get more info there.</p>
+                            
+                            <div class="skillset">
+
+                              <div class="item">
+                                <h3 class="level-title">PHP &amp; MySQL<span class="level-label" data-toggle="tooltip" data-placement="left" data-animation="true" title="You can use the tooltip to explain more about your skill level..."><i class="fas fa-info-circle"></i>Expert</span></h3>
+                                <div class="level-bar">
+                                    <div class="level-bar-inner" data-level="96%">
+                                    </div>                                      
+                                </div><!--//level-bar-->                                 
+                            </div><!--//item-->
+
+                            <div class="item">
+                              <h3 class="level-title">HTML5 &amp; CSS3<span class="level-label" data-toggle="tooltip" data-placement="left" data-animation="true" title="You can use the tooltip to explain more about your skill level..."><i class="fas fa-info-circle"></i>Expert</span></h3>
+                              <div class="level-bar">
+                                  <div class="level-bar-inner" data-level="96%">
+                                  </div>                                      
+                              </div><!--//level-bar-->                                 
+                            </div><!--//item-->     
+                              
+                                <div class="item">
+                                    <h3 class="level-title">Python &amp; Django<span class="level-label" data-toggle="tooltip" data-placement="left" data-animation="true" title="You can use the tooltip to explain more about your skill level..."><i class="fas fa-info-circle"></i>Proficient</span></h3>
+                                    <div class="level-bar">
+                                        <div class="level-bar-inner" data-level="60%">
+                                        </div>                                      
+                                    </div><!--//level-bar-->                                 
+                                </div><!--//item-->
+                                
+                                <div class="item">
+                                    <h3 class="level-title">Javascript &amp; jQuery<span class="level-label" data-toggle="tooltip" data-placement="left" data-animation="true" title="You can use the tooltip to explain more about your skill level..."><i class="fas fa-info-circle"></i>Proficient</span></h3>
+                                    <div class="level-bar">
+                                        <div class="level-bar-inner" data-level="60%">
+                                        </div>                                      
+                                    </div><!--//level-bar-->                                 
+                                </div><!--//item-->
+
+                                <div class="item">
+                                  <h3 class="level-title">Perl<span class="level-label" data-toggle="tooltip" data-placement="left" data-animation="true" title="You can use the tooltip to explain more about your skill level..."><i class="fas fa-info-circle"></i>Expert</span></h3>
+                                  <div class="level-bar">
+                                      <div class="level-bar-inner" data-level="96%">
+                                      </div>                                      
+                                  </div><!--//level-bar-->                                 
+                              </div><!--//item-->
+                                
+                                <p><a class="more-link" href="https://github.com/nathandias"><i class="fas fa-external-link-alt"></i>More on GitHub</a></p> 
+                            </div>              
+                        </div><!--//content-->  
+                    </div><!--//section-inner-->                 
+                </aside><!--//section-->
+                
+                <aside class="testimonials aside section">
+                    <div class="section-inner shadow-sm rounded">
+                        <h2 class="heading">Testimonials</h2>
+                        <div class="content">
+
+                        {% for testimonial in testimonials %}
+                            <div class="item">
+                                <blockquote class="quote">                                  
+                                    <p><i class="fas fa-quote-left"></i>{{ testimonial.quote }}</p>
+                                </blockquote>                
+                                <p class="source"><span class="name">{{ testimonial.author }}</span><br /><span class="title">{{ testimonial.job_title }}</span></p>                                                             
+                            </div><!--//item-->
+                        {% endfor %}                            
+                            <p><a class="more-link" href="https://linkedin.com/in/nathandias5678"><i class="fas fa-external-link-alt"></i>More on Linkedin</a></p> 
+                            
+                        </div><!--//content-->
+                    </div><!--//section-inner-->
+                </aside><!--//section-->
+                
+                <aside class="education aside section">
+                    <div class="section-inner shadow-sm rounded">
+                        <h2 class="heading">Education</h2>
+                        <div class="content">
+                            <div class="item">
+                                <h3 class="title"><i class="fas fa-graduation-cap"></i> BS Computer Engineering</h3>
+                                <h4 class="university">Columbia University <span class="year">(1997-2001)</span></h4>
+                            </div><!--//item-->
+                        </div><!--//content-->
+                    </div><!--//section-inner-->
+                </aside><!--//section-->
+                            
+                <aside class="languages aside section">
+                    <div class="section-inner shadow-sm rounded">
+                        <h2 class="heading">Languages</h2>
+                        <div class="content">
+                            <ul class="list-unstyled">
+                                <li class="item">
+                                    <span class="title"><strong>English:</strong></span>
+                                    <span class="level">Native Speaker <br class="visible-xs"/><i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> <i class="fas fa-star"></i> </span>
+                                </li><!--//item-->
+                                <li class="item">
+                                    <span class="title"><strong>Swedish:</strong></span>
+                                    <span class="level">Enthusiast / For Fun <br class="visible-sm visible-xs"/><i class="fas fa-star"></i> <i class="fas fa-star"></i></i></span>
+                                </li>
+                                <li class="item">
+                                  <span class="title"><strong>German:</strong></span>
+                                  <span class="level">Enthusiast / For Fun <br class="visible-sm visible-xs"/><i class="fas fa-star"></i> <i class="fas fa-star"></i></i></span>
+                              </li>
+                                <!--//item-->
+                            </ul>
+                        </div><!--//content-->
+                    </div><!--//section-inner-->
+                </aside><!--//section-->
+
+              
+            </div><!--//secondary-->    
+        </div><!--//row-->
+{% endblock %}
