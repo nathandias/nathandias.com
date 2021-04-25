@@ -1,0 +1,34 @@
+# passenger configuration for running django on dreamhost
+# customize the values below, then copy and rename this file to:
+#     /home/<username>/<sitename>/passenger_wsgi.py
+
+import sys, os
+INTERP = "/home/<username>/<sitename>/public/<project_dir>/.venv/bin/python3"
+#INTERP is present twice so that the new python interpreter 
+#knows the actual executable path 
+if sys.executable != INTERP: os.execl(INTERP, INTERP, *sys.argv)
+
+cwd = os.getcwd()
+sys.path.append(cwd)
+sys.path.append(cwd + 'nathandias_com')  #You must add your project here
+
+sys.path.insert(0,cwd+'/public/<username>/.venv/bin')
+sys.path.insert(0,cwd+'/public/<username>/.venv/lib/python3.9/site-packages')
+
+os.environ['DJANGO_SETTINGS_MODULE'] = "<app_name>.settings"
+
+# dreamhost specific production settings
+os.environ['DJANGO_DEBUG'] = 'False'
+
+os.environ['DJANGO_DREAMHOST_PRODUCTION'] = 'True'
+os.environ['DREAMHOST_MEDIA_ROOT'] = '/home/<username>/<sitename>/public/media'
+os.environ['DJANGO_SECRET_KEY'] = '' # randomly generated django secret key
+
+os.environ['MYSQL_DATABASE_NAME'] = ''
+os.environ['MYSQL_USER'] = ''
+os.environ['MYSQL_PASSWORD'] = ''
+os.environ['MYSQL_HOST'] = ''
+os.environ['PORT'] = '3306'
+
+from django.core.wsgi import get_wsgi_application
+application = get_wsgi_application()
