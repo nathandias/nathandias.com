@@ -20,7 +20,8 @@ A website displaying my web developer and programmer portfolio, resume and conta
 # if restarting site from scratch
 1. `python manage.py makemigrations`
 2. `python manage.py migrate`
-3. `python manage.py collectstatic`
+3. `python manage.py createsuperuser`
+4. `python manage.py collectstatic`
 
 # if rebuilding site using existing dumped data
 0. on a different host running the site: `python manage.py dumpdata --indent=4 > dumpeddata.json`
