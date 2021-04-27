@@ -20,3 +20,21 @@ def homepage(request):
         'code_projects' : code_projects,
     }
     return render(request, 'home.html', context=context)
+
+
+# Testing Email functionality
+from django.core.mail import send_mail
+from django.http import HttpResponse
+
+def email_test(request):
+
+    recipient = 'nathan@swingornothing.com'
+
+    send_mail(
+        "Test subject",
+        'Testing, testing, 1.2.3',
+        'admin@nathandias.com',
+        [recipient],
+        fail_silently=False,
+    )
+    return HttpResponse("I think I sent an email to %s" % recipient)

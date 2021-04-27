@@ -26,6 +26,10 @@ urlpatterns += [
     path('', views.homepage, name='home'),
 ]
 
+urlpatterns += [
+    path('email/test', views.email_test, name='email-test'),
+]
+
 # Use static() to add url mapping to serve static files during development (only)
 from django.conf import settings
 from django.conf.urls.static import static

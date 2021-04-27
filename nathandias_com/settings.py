@@ -181,3 +181,17 @@ if (DREAMHOST_PRODUCTION):
 else:
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+# Email settings: send through gmail
+EMAIL_HOST = 'smtp.dreamhost.com'
+EMAIL_PORT = 587
+EMAIL_HOST_PASSWORD = 'WDY2ntx7'
+EMAIL_HOST_USER = 'admin@nathandias.com'
+EMAIL_SUBJECT_PREFIX = ''
+EMAIL_USE_TLS = True
+
+DEFAULT_FROM_EMAIL = 'admin@nathandias.com'
+SERVER_EMAIL = 'admin@nathandias.com'
+
+if (DREAMHOST_PRODUCTION):
+    CSRF_COOKIE_SECURE = True
+    SESSION_COOKIE_SECURE = True
