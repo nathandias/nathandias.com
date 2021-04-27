@@ -20,3 +20,10 @@ def homepage(request):
         'code_projects' : code_projects,
     }
     return render(request, 'home.html', context=context)
+
+def googleauth(request):
+    authorization_code = request.GET.get('code', '')
+    context = {
+        'authorization_code' : authorization_code,
+    }
+    return render(request, 'googleauth.html', context=context)
