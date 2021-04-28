@@ -28,11 +28,9 @@ DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 DREAMHOST_PRODUCTION = os.environ.get('DJANGO_DREAMHOST_PRODUCTION', '') != 'False'
 
 ALLOWED_HOSTS = [
-    'nathandias-website.herokuapp.com',
     'nathandias.com',
     'localhost',
 ]
-
 
 # Application definition
 
@@ -180,4 +178,9 @@ if (DREAMHOST_PRODUCTION):
     MEDIA_ROOT = os.environ.get('DREAMHOST_MEDIA_ROOT')
 else:
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+
+
+
 
