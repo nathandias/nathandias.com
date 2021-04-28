@@ -3,6 +3,7 @@ from django.views.generic.base import TemplateView
 
 from developer_info.models import Testimonial, Project
 
+
 class HomePageView(TemplateView):
     template_name = 'home.html'
 
@@ -21,8 +22,14 @@ def homepage(request):
     }
     return render(request, 'home.html', context=context)
 
+
+import logging
+# This retrieves a Python logging instance (or creates it)
+logger = logging.getLogger(__name__)
+
 def googleauth(request):
     authorization_code = request.GET.get('code', '')
+    logger.debug(f'Authorization code: {authorization_code}')
     context = {
         'authorization_code' : authorization_code,
     }

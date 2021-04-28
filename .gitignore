@@ -2,5 +2,6 @@ db.sqlite3
 *.pyc
 .envrc
 media/*
+**/logs/*.log
 staticfiles/
 

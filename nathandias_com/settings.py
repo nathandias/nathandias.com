@@ -181,3 +181,37 @@ if (DREAMHOST_PRODUCTION):
 else:
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+# configure logging
+
+import logging
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'simple_format' : {
+            'format': '{asctime} {name} {levelname} {message}',
+            'style' : '{',
+        }
+    },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple_format',
+            'level' : 'DEBUG',
+        },
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'formatter': 'simple_format',
+            'filename': './logs/debug.log',
+        }
+    },
+    'loggers': {
+        '': {
+            'level': 'DEBUG',
+            'handlers': ['console', 'file']
+        }
+    }
+}
+
+
